@@ -7,11 +7,8 @@ import CrystalReveal from "./CrystalReveal"
 import HiltSelector from "./HiltSelector"
 import LightsaberDisplay from "./LightsaberDisplay"
 
-const STEPS = ["intro", "quiz", "crystal", "hilt", "display"]
-
 const LightsaberBuilder = () => {
   const [step, setStep] = useState("intro")
-  const [answers, setAnswers] = useState([])
   const [crystal, setCrystal] = useState(null)
   const [hilt, setHilt] = useState(null)
   const [bladeColor, setBladeColor] = useState(null)
@@ -19,7 +16,6 @@ const LightsaberBuilder = () => {
 
   const handleQuizComplete = (quizAnswers) => {
     const chosen = selectCrystal(quizAnswers, personalityQuestions)
-    setAnswers(quizAnswers)
     setCrystal(chosen)
     setStep("crystal")
   }
@@ -40,7 +36,6 @@ const LightsaberBuilder = () => {
 
   const handleReset = () => {
     setStep("intro")
-    setAnswers([])
     setCrystal(null)
     setHilt(null)
     setBladeColor(null)

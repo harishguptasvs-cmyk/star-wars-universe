@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 
 const navItems = [
@@ -14,7 +13,6 @@ const navItems = [
 const Navbar = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <nav

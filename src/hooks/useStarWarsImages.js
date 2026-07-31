@@ -10,8 +10,6 @@ export const useStarWarsImages = () => {
 
   useEffect(() => {
     if (cache) {
-      setImageMap(cache)
-      setLoading(false)
       return
     }
 
