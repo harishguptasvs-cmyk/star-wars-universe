@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import StarField from "./components/StarField"
@@ -10,31 +11,40 @@ import GalaxyMap from "./pages/GalaxyMap/GalaxyMap"
 import LightsaberBuilder from "./pages/LightsaberBuilder/LightsaberBuilder"
 import Classifier from "./pages/Classifier/Classifier"
 import Quiz from "./pages/Quiz/Quiz"
-
-const ComingSoon = ({ page }) => (
-  <div
-    style={{
-      minHeight: "calc(100vh - 70px)",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      color: "#FFD700",
-      fontSize: 24,
-      letterSpacing: 4,
-    }}
-  >
-    <div style={{ fontSize: 60, marginBottom: 20 }}>⚔️</div>
-    <p>{page}</p>
-    <p style={{ color: "#666", fontSize: 14, marginTop: 8 }}>
-      Coming Soon...
-    </p>
-  </div>
-)
+import OpeningCrawl from "./components/OpeningCrawl"
 
 function App() {
+  const [showIntro, setShowIntro] = useState(() => {
+    // Avoid synchronous state setting within useEffect in React 19
+    const hasSeen = localStorage.getItem("hasSeenOpeningCrawl")
+    return !hasSeen
+  })
+  const [isFading, setIsFading] = useState(false)
+
+  const handleFinishIntro = () => {
+    setIsFading(true)
+    setTimeout(() => {
+      setShowIntro(false)
+      setIsFading(false)
+      localStorage.setItem("hasSeenOpeningCrawl", "true")
+    }, 1000) // 1 second smooth fade transition
+  }
+
   return (
     <BrowserRouter>
+      {showIntro && (
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 100000,
+          opacity: isFading ? 0 : 1,
+          transition: "opacity 1s ease",
+          pointerEvents: isFading ? "none" : "auto"
+        }}>
+          <OpeningCrawl onFinished={handleFinishIntro} />
+        </div>
+      )}
+
       <div
         style={{
           minHeight: "100vh",

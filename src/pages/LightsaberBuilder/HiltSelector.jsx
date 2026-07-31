@@ -6,12 +6,6 @@ const HiltSelector = ({ crystal, onComplete, onBack }) => {
   const [selectedColor, setSelectedColor] = useState(null)
   const [tab, setTab] = useState("hilt")
 
-  const compatible = hiltStyles.filter(
-    (h) =>
-      h.crystalCompatibility.includes(crystal.color) ||
-      h.crystalCompatibility.includes("Blue")
-  )
-
   const handleComplete = () => {
     if (selectedHilt && selectedColor) {
       onComplete(selectedHilt, selectedColor)

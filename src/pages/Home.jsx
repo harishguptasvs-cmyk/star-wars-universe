@@ -69,6 +69,11 @@ const Home = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  const handleReplay = () => {
+    localStorage.removeItem("hasSeenOpeningCrawl")
+    window.location.reload()
+  }
+
   return (
     <div
       style={{
@@ -153,7 +158,7 @@ const Home = () => {
 
         {/* CTA Buttons */}
         <div
-          style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}
+          style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", alignItems: "center" }}
         >
           <Button onClick={() => navigate("/characters")} size="lg">
             ⚔️ EXPLORE UNIVERSE
@@ -165,6 +170,28 @@ const Home = () => {
           >
             💎 BUILD LIGHTSABER
           </Button>
+          <button
+            onClick={handleReplay}
+            style={{
+              background: "transparent",
+              border: "1px solid rgba(255,232,31,0.4)",
+              color: "#FFE81F",
+              padding: "12px 24px",
+              borderRadius: 8,
+              cursor: "pointer",
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: 2,
+              fontFamily: "Trebuchet MS, sans-serif",
+              transition: "all 0.3s",
+              height: "48px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            🎬 REPLAY INTRO
+          </button>
         </div>
       </div>
 
