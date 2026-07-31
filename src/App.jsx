@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
-import StarField from "./components/StarField"
+import ParallaxBackground from "./components/ParallaxBackground"
+import CustomCursor from "./components/CustomCursor"
 import Home from "./pages/Home"
 import Characters from "./pages/Characters/Characters"
 import CharacterDetail from "./pages/Characters/CharacterDetail"
@@ -52,7 +53,8 @@ function App() {
           position: "relative",
         }}
       >
-        <StarField />
+        <ParallaxBackground />
+        <CustomCursor />
         <Navbar />
         <main
           style={{
