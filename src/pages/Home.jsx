@@ -70,7 +70,7 @@ const Home = () => {
   }, [])
 
   const handleReplay = () => {
-    localStorage.removeItem("hasSeenOpeningCrawl")
+    sessionStorage.removeItem("hasSeenIntro")
     window.location.reload()
   }
 
@@ -204,7 +204,7 @@ const Home = () => {
           alignItems: "center",
           gap: 16,
           marginBottom: 40,
-        }}
+         }}
       >
         <div
           style={{

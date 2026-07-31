@@ -16,7 +16,7 @@ import OpeningCrawl from "./components/OpeningCrawl"
 function App() {
   const [showIntro, setShowIntro] = useState(() => {
     // Avoid synchronous state setting within useEffect in React 19
-    const hasSeen = localStorage.getItem("hasSeenOpeningCrawl")
+    const hasSeen = sessionStorage.getItem("hasSeenIntro")
     return !hasSeen
   })
   const [isFading, setIsFading] = useState(false)
@@ -26,7 +26,7 @@ function App() {
     setTimeout(() => {
       setShowIntro(false)
       setIsFading(false)
-      localStorage.setItem("hasSeenOpeningCrawl", "true")
+      sessionStorage.setItem("hasSeenIntro", "true")
     }, 1000) // 1 second smooth fade transition
   }
 
